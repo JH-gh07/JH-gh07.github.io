@@ -20,8 +20,8 @@ params:
   ShowToc: true
 
   homeInfoParams:
-    Title: "欢迎来到我的博客"
-    Content: "用 Hugo + PaperMod + GitHub Pages 搭建"
+    Title: "这里是cAIog博客"
+    Content: "边学习，边记录，边分享。"
 
 menu:
   main:
