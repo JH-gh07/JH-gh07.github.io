@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>我的博客</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on 我的博客</description>
+    <generator>Hugo -- 0.152.2</generator>
+    <language>zh-cn</language>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title></title>
+      <link>http://localhost:1313/posts/paperinsight/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/paperinsight/</guid>
+      <description>&lt;h1 id=&#34;深夜有感关于论文构思idea的时候该如何进行细化&#34;&gt;深夜有感——关于论文构思idea的时候该如何进行细化&lt;/h1&gt;
+&lt;p&gt;三个层次：
+1）整体结构层面；2）论证逻辑层面；3）写作执行层面。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;虽然这整体是ai构思出来的，但是我个人认为，不管是ai还是人写出来，能用，能在后续给我们启发，就可以采纳、可以拿来使用，因为这个不同人一般不会问这个，也不会想到这一点，但是我想到了，也觉得很受用、很实用，于是乎分享出来，大家相互启发&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;一整体结构层先把整篇论文长什么样想清楚&#34;&gt;一、整体结构层：先把“整篇论文长什么样”想清楚&lt;/h2&gt;
+&lt;h3 id=&#34;方法-1从一个核心研究问题倒推整篇论文backward-design&#34;&gt;方法 1：从一个“核心研究问题”倒推整篇论文（Backward Design）&lt;/h3&gt;
+&lt;p&gt;步骤：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;用一句话写下你的“核心研究问题”&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;模板：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;我想解决的核心问题是：在 _______ 情境下， _______ 是如何影响 / 解释 / 改善 _______ 的？&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;再写一句话说明“为什么值得研究”&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;模板：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;这个问题重要，因为 _______（现实问题 / 理论空缺 / 实践需求）。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;接着问自己三个问题，并记录答案：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;如果这篇论文只剩一页，我最想让读者记住什么结论？&lt;/li&gt;
+&lt;li&gt;为了让读者相信这个结论，我“至少”要提供哪些关键证据？&lt;/li&gt;
+&lt;li&gt;为了得到这些证据，我“必须”做哪些研究设计（理论推演 / 实验 / 调查 / 模型等）？&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;把这三步写出来之后，你就能大致勾出论文的主线结构：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1 引言：提出核心问题 + 说明重要性&lt;/li&gt;
+&lt;li&gt;2 文献回顾：证明“别人还没解决好”&lt;/li&gt;
+&lt;li&gt;3 理论与假设：你如何从理论上推导你的观点&lt;/li&gt;
+&lt;li&gt;4 方法：你怎么收集、分析数据验证&lt;/li&gt;
+&lt;li&gt;5 结果&lt;/li&gt;
+&lt;li&gt;6 讨论与结论：意义 + 限制 + 未来方向&lt;/li&gt;
+&lt;/ul&gt;
+&lt;blockquote&gt;
+&lt;p&gt;实际上，大部分学术论文（尤其是理工科、社科）都是在这条主线上的变体。&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;方法-2写一个1-页研究计划书one-page-proposal&#34;&gt;方法 2：写一个“1 页研究计划书”（One-page Proposal）&lt;/h3&gt;
+&lt;p&gt;在真正写论文前，强迫自己把整个论文压缩成 1 页 A4，格式可以是：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;题目（暂定）&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;要能让外行大致知道你在干什么，而不是只有术语。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;研究背景（3–5 句）&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

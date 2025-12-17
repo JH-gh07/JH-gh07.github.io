@@ -1,0 +1,33 @@
+baseURL: "https://JH-gh07.github.io/"
+languageCode: "zh-cn"
+title: "我的博客"
+theme: ["PaperMod"]
+pagination: 
+  paperSize: 10
+enableRobotsTXT: true
+
+# Hugo 官方建议：把图片缓存放到 cacheDir（Actions 缓存更稳）
+caches:
+  images:
+    dir: ":cacheDir/images"
+
+params:
+  defaultTheme: auto
+  ShowReadingTime: true
+  ShowPostNavLinks: true
+  ShowCodeCopyButtons: true
+  ShowBreadCrumbs: true
+  ShowToc: true
+
+  homeInfoParams:
+    Title: "欢迎来到我的博客"
+    Content: "用 Hugo + PaperMod + GitHub Pages 搭建"
+
+menu:
+  main:
+    - name: Archives
+      url: archives
+      weight: 10
+    - name: Tags
+      url: tags
+      weight: 20
