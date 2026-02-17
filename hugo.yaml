@@ -1,33 +1,58 @@
 baseURL: "https://JH-gh07.github.io/"
 languageCode: "zh-cn"
 title: "我的博客"
-theme: ["PaperMod"]
-pagination: 
-  paperSize: 10
+
+# Hugo Modules - Import Hextra theme
+module:
+  imports:
+    - path: github.com/imfing/hextra
+
+# Markup configuration for Hextra
+markup:
+  goldmark:
+    renderer:
+      unsafe: true  # Allow raw HTML in markdown
+  highlight:
+    noClasses: false  # Enable syntax highlighting
+
+# Menu configuration
+menu:
+  main:
+    - name: Blog
+      pageRef: /posts
+      weight: 1
+    - name: Archives
+      pageRef: /archives
+      weight: 2
+    - name: Tags
+      pageRef: /tags
+      weight: 3
+    - name: Search
+      weight: 4
+      params:
+        type: search
+
+# Keep existing configurations
 enableRobotsTXT: true
 
-# Hugo 官方建议：把图片缓存放到 cacheDir（Actions 缓存更稳）
+pagination:
+  pagerSize: 10
+
+# Hugo build cache
 caches:
   images:
     dir: ":cacheDir/images"
 
+# Hextra parameters
 params:
-  defaultTheme: auto
-  ShowReadingTime: true
-  ShowPostNavLinks: true
-  ShowCodeCopyButtons: true
-  ShowBreadCrumbs: true
-  ShowToc: true
+  description: "边学习，边记录，边分享。"
 
-  homeInfoParams:
-    Title: "这里是cAIog博客"
-    Content: "边学习，边记录，边分享。"
+  # Navbar settings
+  navbar:
+    displayTitle: true
+    displayLogo: false
 
-menu:
-  main:
-    - name: Archives
-      url: archives
-      weight: 10
-    - name: Tags
-      url: tags
-      weight: 20
+  # Footer settings
+  footer:
+    displayCopyright: true
+    displayPoweredBy: false
