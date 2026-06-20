@@ -1,0 +1,19 @@
+{{- $context := .context -}}
+{{- $context.Store.Set "enableFooterSwitches" true -}}
+<aside class="hextra-sidebar-container hx:flex hx:flex-col hx:print:hidden hx:md:hidden hx:max-md:[transform:translate3d(0,-100%,0)]">
+  <div class="hx:px-4 hx:pt-4">{{ partial "search.html" }}</div>
+  <div class="hextra-scrollbar hx:grow hx:overflow-y-auto hx:p-4">
+    <nav class="caiog-mobile-nav" aria-label="移动导航">
+      {{ range site.Menus.main }}
+        {{ if ne .Params.type "search" }}
+          {{- $link := .URL -}}
+          {{- with .PageRef }}{{ if hasPrefix . "/" }}{{ $link = relLangURL (strings.TrimPrefix "/" .) }}{{ end }}{{ end -}}
+          <a href="{{ $link }}">{{ .Name }}</a>
+        {{ end }}
+      {{ end }}
+    </nav>
+  </div>
+  <div class="hx:mx-4 hx:border-t hx:border-gray-200 hx:py-4 hx:dark:border-neutral-800">
+    {{ partial "theme-toggle.html" (dict "hideLabel" false "location" "bottom-right") }}
+  </div>
+</aside>

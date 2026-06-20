@@ -1,5 +1,5 @@
 ---
-title: Blog
+title: 文稿
 cascade:
   type: blog
 ---

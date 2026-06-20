@@ -1,0 +1,27 @@
+{{ define "main" }}
+  <div class="hx:mx-auto hx:flex hextra-max-page-width">
+    {{ partial "sidebar.html" (dict "context" . "disableSidebar" true "displayPlaceholder" true) }}
+    {{ partial "toc.html" . }}
+    <article class="hx:w-full hx:min-w-0 hx:pb-12">
+      <main class="caiog-single">
+        <header class="caiog-article-header">
+          <small>BLOG · ARTICLE</small>
+          <h1>{{ .Title }}</h1>
+          {{ with .Description }}<p>{{ . }}</p>{{ end }}
+          <div>
+            <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006年01月02日" }}</time>
+            {{ with .Params.tags }}<span>·</span>{{ range first 4 . }}<a href="{{ relURL (printf "tags/%s/" (. | urlize)) }}">#{{ . }}</a>{{ end }}{{ end }}
+          </div>
+        </header>
+        <div class="content caiog-article-body">{{ .Content }}</div>
+        <footer class="caiog-article-end"><span>END</span><p>感谢阅读。</p></footer>
+        {{ partial "components/last-updated.html" . }}
+        {{ if (site.Params.blog.article.displayPagination | default true) }}
+          {{ .Store.Set "reversePagination" (.Params.reversePagination | default true) }}
+          {{ partial "components/pager.html" . }}
+        {{ end }}
+        {{ partial "components/comments.html" . }}
+      </main>
+    </article>
+  </div>
+{{ end }}

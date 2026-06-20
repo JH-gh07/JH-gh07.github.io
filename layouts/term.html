@@ -1,0 +1,19 @@
+{{ define "main" }}
+  {{ partial "sidebar.html" (dict "context" . "disableSidebar" true) }}
+  <main class="caiog-shell caiog-term">
+    <header class="caiog-page-header">
+      <small>TOPIC</small>
+      <h1># {{ .Title }}</h1>
+      <p>这个主题下有 {{ len .Pages }} 篇文章。</p>
+    </header>
+    <div class="caiog-writing-list">
+      {{ range .Pages.ByDate.Reverse }}
+        <article>
+          <div class="caiog-writing-meta"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time></div>
+          <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+          <p>{{ partial "utils/page-description" . | plainify | truncate 120 }}</p>
+        </article>
+      {{ end }}
+    </div>
+  </main>
+{{ end }}

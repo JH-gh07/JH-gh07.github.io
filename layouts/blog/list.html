@@ -1,0 +1,25 @@
+{{ define "main" }}
+  {{- $pages := partial "utils/sort-pages" (dict "page" . "by" site.Params.blog.list.sortBy "order" site.Params.blog.list.sortOrder) -}}
+  {{- $paginator := .Paginate $pages (site.Params.blog.list.pagerSize | default 10) -}}
+  {{ partial "sidebar.html" (dict "context" . "disableSidebar" true) }}
+  <main class="caiog-shell caiog-writing">
+    <header class="caiog-page-header">
+      <small>BLOG</small>
+      <h1>{{ .Title }}</h1>
+      <p>技术、研究与工具实践，共 {{ len $pages }} 篇。</p>
+    </header>
+    <div class="caiog-writing-list">
+      {{ range $paginator.Pages }}
+        <article>
+          <div class="caiog-writing-meta">
+            <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
+            {{ with .Params.tags }}<span>{{ delimit (first 3 .) " / " }}</span>{{ end }}
+          </div>
+          <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+          <p>{{ partial "utils/page-description" . | plainify | truncate 120 }}</p>
+        </article>
+      {{ end }}
+    </div>
+    {{ if gt $paginator.TotalPages 1 }}<div class="caiog-pagination">{{ partial "components/blog-pager.html" $paginator }}</div>{{ end }}
+  </main>
+{{ end }}

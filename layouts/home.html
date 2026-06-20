@@ -1,54 +1,69 @@
 {{ define "main" }}
   {{- $posts := where site.RegularPages.ByDate.Reverse "Section" "posts" -}}
-  {{- $recent := first 3 $posts -}}
-  {{- $topics := first 4 site.Taxonomies.tags.ByCount -}}
-  <div class="hx:mx-auto hx:flex hextra-max-page-width">
-    {{ partial "sidebar.html" (dict "context" . "disableSidebar" true "displayPlaceholder" true) }}
-    <article class="hx:w-full hx:break-words hx:flex hx:min-h-[calc(100vh-var(--navbar-height))] hx:min-w-0 hx:justify-center hx:pb-8 hx:pr-[calc(env(safe-area-inset-right)-1.5rem)]">
-      <main class="hx:w-full hx:min-w-0 hx:max-w-6xl hx:px-6 hx:pt-4 hx:md:px-12">
-        <section class="hx:mx-auto hx:max-w-4xl hx:py-12 hx:text-center hx:md:py-20">
-          <p class="hx:text-sm hx:font-medium hx:text-primary-600">学习 · 记录 · 分享</p>
-          <h1 class="hx:mt-4 hx:text-4xl hx:font-bold hx:tracking-tight hx:text-slate-900 hx:md:text-5xl hx:dark:text-slate-100">{{ .Title }}</h1>
-          <div class="content hx:mx-auto hx:mt-5 hx:max-w-2xl hx:text-lg hx:text-gray-600 hx:dark:text-gray-300">{{ .Content }}</div>
-          <div class="hx:mt-8 hx:flex hx:flex-wrap hx:justify-center hx:gap-3">
-            <a class="hx:rounded-full hx:bg-primary-600 hx:px-6 hx:py-3 hx:font-medium hx:text-white hx:transition-colors hx:hover:bg-primary-700" href="{{ relURL "posts/" }}">阅读最新文章</a>
-            <a class="hx:rounded-full hx:border hx:border-gray-300 hx:px-6 hx:py-3 hx:font-medium hx:text-gray-700 hx:transition-colors hx:hover:border-gray-400 hx:hover:text-gray-900 hx:dark:border-neutral-700 hx:dark:text-gray-200 hx:dark:hover:border-neutral-500 hx:dark:hover:text-white" href="{{ relURL "archives/" }}">浏览全部归档</a>
-          </div>
-        </section>
+  {{- $recent := first 5 $posts -}}
+  {{- $topics := first 6 site.Taxonomies.tags.ByCount -}}
+  {{ partial "sidebar.html" (dict "context" . "disableSidebar" true) }}
+  <main class="caiog-shell caiog-home">
+    <section class="caiog-hero" aria-labelledby="hero-title">
+      <div class="caiog-avatar" aria-hidden="true">JH</div>
+      <p class="caiog-kicker">WELCOME TO CAIOG</p>
+      <h1 id="hero-title">Hi，这里是 <em>cAIog</em><br><span>把学习沉淀成可以重访的文字</span></h1>
+      <p class="caiog-role"><span>AI</span><i>·</i><span>Research</span><i>·</i><span>Code</span></p>
+      <blockquote>“边学习，边记录，边分享。”</blockquote>
+      <div class="caiog-hero-stats" aria-label="博客统计">
+        <span><b>{{ len $posts }}</b> 篇文章</span>
+        <span>始于 <b>{{ with $posts }}{{ (index .ByDate 0).Date.Format "2006" }}{{ end }}</b></span>
+        <span><b>{{ len site.Taxonomies.tags }}</b> 个主题</span>
+      </div>
+      <nav class="caiog-social" aria-label="外部链接">
+        <a href="https://github.com/JH-gh07" target="_blank" rel="noreferrer">GitHub ↗</a>
+        <a href="{{ relURL "index.xml" }}">RSS</a>
+      </nav>
+    </section>
 
-        <section class="hx:mx-auto hx:max-w-4xl" aria-labelledby="latest-posts">
-          <header class="hx:flex hx:items-baseline hx:justify-between hx:border-b hx:border-gray-200 hx:pb-3 hx:dark:border-neutral-800">
-            <h2 id="latest-posts" class="hx:text-2xl hx:font-semibold hx:tracking-tight">最近文章</h2>
-            <a class="hx:text-sm hx:font-medium hx:text-gray-500 hx:transition-colors hx:hover:text-primary-600 hx:dark:text-gray-400" href="{{ relURL "posts/" }}">查看全部 →</a>
-          </header>
-          <div class="hx:grid hx:gap-4 hx:py-6 hx:lg:grid-cols-3">
-            {{ range $recent }}
-              <article class="hx:flex hx:flex-col hx:rounded-xl hx:border hx:border-gray-200 hx:p-5 hx:transition-colors hx:hover:border-gray-300 hx:dark:border-neutral-800 hx:dark:hover:border-neutral-700">
-                <time class="hx:text-sm hx:text-gray-500 hx:dark:text-gray-400" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006-01-02" }}</time>
-                <h3 class="hx:mt-3 hx:text-lg hx:font-semibold hx:leading-7">
-                  <a class="hx:text-gray-900 hx:transition-colors hx:hover:text-primary-600 hx:dark:text-gray-100" href="{{ .RelPermalink }}">{{ .Title }}</a>
-                </h3>
-                <p class="hx:mt-3 hx:text-sm hx:leading-6 hx:text-gray-600 hx:dark:text-gray-400">{{ partial "utils/page-description" . | plainify | truncate 64 }}</p>
-              </article>
-            {{ end }}
-          </div>
-        </section>
-
-        <section class="hx:mx-auto hx:mt-12 hx:max-w-4xl hx:border-t hx:border-gray-200 hx:py-10 hx:dark:border-neutral-800" aria-labelledby="topics">
-          <h2 id="topics" class="hx:text-2xl hx:font-semibold hx:tracking-tight">主要主题</h2>
-          <div class="hx:mt-5 hx:flex hx:flex-wrap hx:gap-3">
-            {{ range $topics }}
-              <a class="hx:rounded-full hx:border hx:border-gray-200 hx:px-4 hx:py-2 hx:text-sm hx:font-medium hx:text-gray-700 hx:transition-colors hx:hover:border-primary-600 hx:hover:text-primary-600 hx:dark:border-neutral-800 hx:dark:text-gray-300" href="{{ .Page.RelPermalink }}">{{ .Page.Title }} <span class="hx:text-gray-400">{{ .Count }}</span></a>
-            {{ end }}
-          </div>
-          {{ with $posts }}
-            {{- $oldest := index .ByDate 0 -}}
-            {{- $newest := index .ByDate.Reverse 0 -}}
-            <p class="hx:mt-10 hx:text-sm hx:text-gray-500 hx:dark:text-gray-400">{{ len . }} 篇文章 · 持续写作于 {{ $oldest.Date.Format "2006" }}–{{ $newest.Date.Format "2006" }}</p>
+    <section class="caiog-home-grid" aria-label="博客近况">
+      <div class="caiog-recent">
+        <header class="caiog-section-heading">
+          <div><small>RECENT WRITING</small><h2>近期笔墨</h2></div>
+          <a href="{{ relURL "posts/" }}">全部文稿 →</a>
+        </header>
+        <ol>
+          {{ range $index, $page := $recent }}
+            <li>
+              <span>{{ printf "%02d" (add $index 1) }}</span>
+              <div>
+                <p>{{ with $page.Params.tags }}{{ index . 0 }} · {{ end }}{{ $page.Date.Format "2006-01-02" }}</p>
+                <h3><a href="{{ $page.RelPermalink }}">{{ $page.Title }}</a></h3>
+              </div>
+            </li>
           {{ end }}
+        </ol>
+      </div>
+
+      <aside class="caiog-home-aside">
+        <section>
+          <header class="caiog-section-heading"><div><small>CURRENT SIGNALS</small><h2>正在关注</h2></div></header>
+          <div class="caiog-topic-cloud">
+            {{ range $topics }}
+              <a href="{{ .Page.RelPermalink }}">{{ .Page.Title }} <sup>{{ .Count }}</sup></a>
+            {{ end }}
+          </div>
         </section>
-      </main>
-    </article>
-    <div class="hx:max-xl:hidden hx:h-0 hx:w-64 hx:shrink-0"></div>
-  </div>
+        <section class="caiog-note">
+          <small>ABOUT THIS PLACE</small>
+          <p>这里收纳技术实践、研究方法与工具笔记。文章会同步到多个平台，而这里保留完整目录。</p>
+          <a href="{{ relURL "archives/" }}">沿时间阅读 →</a>
+        </section>
+      </aside>
+    </section>
+
+    <section class="caiog-years" aria-labelledby="years-title">
+      <div class="caiog-section-heading"><div><small>WRITING TRAIL</small><h2 id="years-title">笔耕不辍</h2></div></div>
+      <div>
+        {{ range $posts.GroupByDate "2006" }}
+          <a href="{{ relURL "archives/" }}#year-{{ .Key }}"><b>{{ .Key }}</b><span>{{ len .Pages }} 篇</span></a>
+        {{ end }}
+      </div>
+    </section>
+  </main>
 {{ end }}

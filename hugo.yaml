@@ -1,5 +1,6 @@
 baseURL: "https://JH-gh07.github.io/"
 languageCode: "zh-cn"
+defaultContentLanguage: "zh-cn"
 title: "我的博客"
 
 # Hugo Modules - Import Hextra theme
@@ -18,13 +19,13 @@ markup:
 # Menu configuration
 menu:
   main:
-    - name: Blog
+    - name: 文稿
       pageRef: /posts
       weight: 1
-    - name: Archives
+    - name: 时光
       pageRef: /archives
       weight: 2
-    - name: Tags
+    - name: 主题
       pageRef: /tags
       weight: 3
     - name: Search
