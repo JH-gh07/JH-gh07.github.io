@@ -1,0 +1,105 @@
+{{ define "main" }}
+  {{- $posts := where .Site.RegularPages.ByDate.Reverse "Section" "posts" -}}
+  {{- $latest := first 5 $posts -}}
+  {{- $featured := false -}}
+  {{- if gt (len $latest) 0 -}}
+    {{- $featured = index $latest 0 -}}
+  {{- end -}}
+  {{ partial "sidebar.html" (dict "context" . "disableSidebar" true) }}
+  <main class="research-home">
+    <section class="research-hero" aria-labelledby="home-title">
+      <div class="research-hero__copy">
+        <p class="research-kicker"><span aria-hidden="true"></span> cAIog / research notes</p>
+        <h1 id="home-title">把问题拆开，<br><em>把过程写下。</em></h1>
+        <p class="research-intro">这里记录 AI 工具、科研方法与工程实践。不是标准答案，而是一份持续生长的探索档案。</p>
+        <div class="research-actions">
+          <a class="research-button research-button--primary" href="#latest">阅读最新文章 <span aria-hidden="true">&rarr;</span></a>
+          <a class="research-button research-button--quiet" href="{{ relURL "posts/" }}">浏览全部文章</a>
+        </div>
+        <dl class="research-stats" aria-label="博客统计">
+          <div><dt>{{ len $posts }}</dt><dd>篇文章</dd></div>
+          <div><dt>{{ len .Site.Taxonomies.tags }}</dt><dd>个主题</dd></div>
+          <div><dt>{{ with $featured }}{{ .Date.Format "2006.01" }}{{ else }}--{{ end }}</dt><dd>最近更新</dd></div>
+        </dl>
+      </div>
+
+      <aside class="research-desk" aria-label="当前研究方向">
+        <div class="research-desk__bar">
+          <span class="research-desk__lights" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span>field-notes.md</span>
+          <span>active</span>
+        </div>
+        <div class="research-desk__body">
+          <p class="research-prompt"><span>$</span> focus --now</p>
+          <p class="research-output">AI &times; research &times; building</p>
+          <p class="research-prompt"><span>$</span> method</p>
+          <ol class="research-method">
+            <li><b>01</b><span>观察问题</span></li>
+            <li><b>02</b><span>拆解验证</span></li>
+            <li><b>03</b><span>记录分享</span></li>
+          </ol>
+          <div class="research-orbit" aria-hidden="true">
+            <span class="research-orbit__core">idea</span>
+            <i></i><i></i><i></i>
+          </div>
+          <p class="research-cursor">持续更新中<span aria-hidden="true">_</span></p>
+        </div>
+      </aside>
+    </section>
+
+    <section class="research-latest" id="latest" aria-labelledby="latest-title">
+      <div class="research-section-heading">
+        <div>
+          <p>Latest field notes</p>
+          <h2 id="latest-title">最近写下的</h2>
+        </div>
+        <a href="{{ relURL "posts/" }}">查看文章归档 <span aria-hidden="true">&rarr;</span></a>
+      </div>
+
+      <div class="research-editorial">
+        {{ with $featured }}
+          <article class="research-featured">
+            <p class="research-article-meta"><time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time><span>NEW</span></p>
+            <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+            <p>{{ .Description | default (.Summary | plainify | truncate 150) }}</p>
+            <a class="research-read-link" href="{{ .RelPermalink }}">打开这篇笔记 <span aria-hidden="true">&nearr;</span></a>
+          </article>
+        {{ else }}
+          <article class="research-featured research-featured--empty">
+            <p class="research-article-meta"><span>FIELD NOTE 00</span></p>
+            <h3>第一篇探索正在路上</h3>
+            <p>这里将记录新发现、验证过程与实践经验。</p>
+          </article>
+        {{ end }}
+
+        <div class="research-article-list">
+          {{ range after 1 $latest }}
+            <article>
+              <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "01 / 02" }}</time>
+              <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+              <span aria-hidden="true">&nearr;</span>
+            </article>
+          {{ end }}
+        </div>
+      </div>
+    </section>
+
+    <section class="research-topics" aria-labelledby="topics-title">
+      <div class="research-topics__intro">
+        <p>Knowledge index</p>
+        <h2 id="topics-title">从一个主题开始漫游</h2>
+      </div>
+      <div class="research-topic-list">
+        {{ range first 7 .Site.Taxonomies.tags.ByCount }}
+          <a href="{{ .Page.RelPermalink }}"><span>{{ .Page.Title }}</span><small>{{ .Count }} 篇</small></a>
+        {{ end }}
+      </div>
+    </section>
+
+    <footer class="research-home-note">
+      <span>cAIog</span>
+      <p>边学习，边记录，边分享。</p>
+      <a href="{{ relURL "index.xml" }}">RSS</a>
+    </footer>
+  </main>
+{{ end }}

@@ -1,6 +1,7 @@
 baseURL: "https://JH-gh07.github.io/"
 languageCode: "zh-cn"
-title: "我的博客"
+defaultContentLanguage: "zh-cn"
+title: "cAIog"
 
 # Hugo Modules - Import Hextra theme
 module:
