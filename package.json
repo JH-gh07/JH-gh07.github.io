@@ -1,0 +1,11 @@
+{
+  "name": "jh-blog-publishing",
+  "private": true,
+  "scripts": {
+    "sync": "bash scripts/wechatsync.sh",
+    "sync:check": "bash scripts/wechatsync.sh --check"
+  },
+  "devDependencies": {
+    "@wechatsync/cli": "1.1.0"
+  }
+}
